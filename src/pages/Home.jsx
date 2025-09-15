@@ -73,7 +73,7 @@ const Home = () => {
               <Button size="lg" className="bg-white text-primary-600 hover:bg-gray-100">
                 Sign Up as Volunteer
               </Button>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
+              <Button size="lg" className="bg-white text-primary-600 hover:bg-gray-100">
                 Register Organization
               </Button>
             </div>

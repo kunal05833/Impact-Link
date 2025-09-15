@@ -59,4 +59,7 @@
     color: hsl(var(--foreground));
     font-family: 'Inter', system-ui, sans-serif;
   }
+  html {
+  scroll-padding-top: 4rem; /* navbar is ~64px (h-16) */
+}
 }
