@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import SearchBar from './SearchBar'
 import AnimatedBackground from './AnimatedBackground'
+import { Link } from 'react-router-dom'
 
 // SAFE components
 import ErrorBoundary from '@/components/animations/ErrorBoundary'
@@ -54,10 +55,10 @@ const HeroBanner = () => {
   }, [])
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+   <section className="relative min-h-[calc(100vh-4rem)] flex items-center justify-center overflow-hidden">
       <AnimatedBackground />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-12">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left */}
           <motion.div
@@ -83,12 +84,17 @@ const HeroBanner = () => {
               </p>
             </div>
 
-            <SearchBar />
+           
 
-            <div className="flex flex-wrap gap-4">
-              <Button variant="gradient" size="lg">Get Started</Button>
-              <Button variant="outline" size="lg">Watch Demo</Button>
-            </div>
+         
+
+
+<div className="flex flex-wrap gap-4">
+  <Button asChild variant="gradient" size="lg" className="group">
+    <Link to="/login">Get Started</Link>
+  </Button>
+ 
+</div>
           </motion.div>
 
           {/* Right - SAFE Lottie */}

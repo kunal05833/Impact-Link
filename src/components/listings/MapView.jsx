@@ -1,22 +1,27 @@
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
-import { Icon } from 'leaflet'
+import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
+import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png'
+import markerIcon from 'leaflet/dist/images/marker-icon.png'
+import markerShadow from 'leaflet/dist/images/marker-shadow.png'
 import { Card } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { MapPin, Briefcase, Clock } from 'lucide-react'
+import { MapPin } from 'lucide-react'
+
+/* Fix default icon paths for Vite */
+const DefaultIcon = L.icon({
+  iconUrl: markerIcon,
+  iconRetinaUrl: markerIcon2x,
+  shadowUrl: markerShadow,
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41],
+})
+L.Marker.prototype.options.icon = DefaultIcon
 
 const MapView = ({ opportunities }) => {
-  // Default center (India)
   const defaultCenter = [20.5937, 78.9629]
-  
-  // Custom marker icon
-  const customIcon = new Icon({
-    iconUrl: '/marker-icon.png',
-    iconSize: [25, 41],
-    iconAnchor: [12, 41],
-  })
-
-  // Sample locations with opportunities
   const locations = [
     { id: 1, position: [28.6139, 77.2090], city: 'Delhi', count: 45 },
     { id: 2, position: [19.0760, 72.8777], city: 'Mumbai', count: 38 },
@@ -26,45 +31,18 @@ const MapView = ({ opportunities }) => {
   ]
 
   return (
-    <div className="h-[600px] w-full rounded-xl overflow-hidden shadow-lg">
-      <MapContainer
-        center={defaultCenter}
-        zoom={5}
-        className="h-full w-full"
-        scrollWheelZoom={false}
-      >
+    <div className="h-[500px] w-full rounded-xl overflow-hidden shadow-lg">
+      <MapContainer center={defaultCenter} zoom={5} className="h-full w-full" scrollWheelZoom={false}>
         <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          attribution='&copy; OpenStreetMap contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        
-        {locations.map((location) => (
-          <Marker
-            key={location.id}
-            position={location.position}
-            icon={customIcon}
-          >
+        {locations.map((loc) => (
+          <Marker key={loc.id} position={loc.position}>
             <Popup>
-              <Card className="border-0 shadow-none">
-                <div className="p-4">
-                  <h3 className="font-semibold text-lg mb-2 flex items-center">
-                    <MapPin size={16} className="mr-2" />
-                    {location.city}
-                  </h3>
-                  <div className="space-y-2">
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm text-gray-600">Opportunities</span>
-                      <Badge variant="default">{location.count}</Badge>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm text-gray-600">Organizations</span>
-                      <span className="font-medium">{Math.floor(location.count / 3)}</span>
-                    </div>
-                  </div>
-                  <button className="mt-3 w-full text-sm text-primary-600 hover:text-primary-700 font-medium">
-                    View All →
-                  </button>
-                </div>
+              <Card className="border-0 shadow-none p-2">
+                <h3 className="font-semibold text-sm flex items-center"><MapPin size={14} className="mr-1"/>{loc.city}</h3>
+                <p className="text-xs mt-1">Opportunities: <Badge variant="default">{loc.count}</Badge></p>
               </Card>
             </Popup>
           </Marker>
@@ -73,5 +51,4 @@ const MapView = ({ opportunities }) => {
     </div>
   )
 }
-
 export default MapView

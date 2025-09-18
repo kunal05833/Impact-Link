@@ -23,9 +23,9 @@ const Footer = () => {
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
               <div className="w-10 h-10 rounded-full bg-gradient-to-r from-primary-500 to-secondary-500 flex items-center justify-center">
-                <span className="text-white font-bold text-xl">I</span>
+                <span className="text-white font-bold text-xl">IC</span>
               </div>
-              <h3 className="text-xl font-bold gradient-text">ImpactLink</h3>
+              <h3 className="text-xl font-bold gradient-text">InternCell</h3>
             </div>
             <p className="text-gray-600 dark:text-gray-400">
               Connecting changemakers with opportunities that matter.
@@ -68,10 +68,10 @@ const Footer = () => {
         <div className="mt-8 pt-8 border-t border-gray-200 dark:border-gray-800">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-600 dark:text-gray-400 text-sm">
-              © 2025 ImpactLink. Built with <Heart className="inline w-4 h-4 text-red-500" /> for SIH.
+              © 2025 InternCell. Built with <Heart className="inline w-4 h-4 text-red-500" /> for SIH.
             </p>
             <p className="text-gray-600 dark:text-gray-400 text-sm mt-2 md:mt-0">
-              Made by Team Innovators
+              Made by Team InternCell
             </p>
           </div>
         </div>

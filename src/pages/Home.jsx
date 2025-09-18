@@ -5,12 +5,18 @@ import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { mockJobs } from '@/lib/mockData'
 import { ArrowRight, Sparkles } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import CategoryChips from '@/components/features/CategoryChips'
 
 const Home = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen ">
       <HeroBanner />
       <FeatureCards />
+
+       <CategoryChips />
+
+       
       
       {/* Latest Opportunities */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
@@ -55,6 +61,8 @@ const Home = () => {
         </div>
       </section>
 
+     
+
       {/* CTA Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-primary-600 to-secondary-600">
         <div className="max-w-4xl mx-auto text-center text-white">
@@ -69,14 +77,12 @@ const Home = () => {
             <p className="text-xl mb-8 opacity-90">
               Join thousands of changemakers already making a difference
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-white text-primary-600 hover:bg-gray-100">
-                Sign Up as Volunteer
-              </Button>
-              <Button size="lg" className="bg-white text-primary-600 hover:bg-gray-100">
-                Register Organization
-              </Button>
-            </div>
+   <Button asChild size="lg" className="bg-white text-primary-600 hover:bg-gray-100 mr-1">
+  <Link to="/register?role=volunteer">Sign Up as Volunteer</Link>
+</Button>
+<Button asChild size="lg" className="bg-white text-primary-600 hover:bg-gray-100 ml-1">
+  <Link to="/register?role=organization">Register Organization</Link>
+</Button>
           </motion.div>
         </div>
       </section>
